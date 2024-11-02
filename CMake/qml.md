@@ -268,13 +268,44 @@ Window {
 
 
 
-## 3、统一位置显示不同的组件
+## 3、Qt CMake
 
+>参考：
+>
+>* [Dashboard - My Courses - Start Course | Qt Academy](https://academy.qt.io/enrollments/236278881/page/905050786)
+>
+>
 
+```cmake
+find_package(Qt6 REQUIRED COMPONENTS
+	Core
+)
+```
+
+This command tells CMake to look for a Qt version and to import the Core module. There is no point in continuing（没有继续下去的必要了） if CMake cannot locate the module, so we mark the module as **REQUIRED**.
+
+To be able to find the package, CMake must find the Qt installation（安装路径）. To tell CMake where Qt is, you can set the CMake cache variable, **CMAKE_PREFIX_PATH**, to include the path to the folder where you installed Qt 6. Qt Creator handles this by using **kits**.
+
+```cmake
+target_link_libraries(helloworld
+	PRIVATE
+		Qt6::Core
+)
+
+target_link_libraries(<target> ... <item>... ...)
+```
+
+Tells CMake that the  executable  uses the Qt Core module by referencing the **Qt6::Core** target that the **find_package()** command imports. 
+
+The named `<target>` must have been created by a command such as [`add_executable()`](https://cmake.org/cmake/help/latest/command/add_executable.html#command:add_executable) or [`add_library()`](https://cmake.org/cmake/help/latest/command/add_library.html#command:add_library) and must not be an [ALIAS target](https://cmake.org/cmake/help/latest/manual/cmake-buildsystem.7.html#alias-targets). 
 
 
 
 ## TO-DO、qrc 方式组织 qml 文件
+
+
+
+
 
 
 
