@@ -1,4 +1,4 @@
-## 在 `Ubuntu` 环境下使用 `cmake` 构建 `libevent` 
+## 在 `Ubuntu` 环境下使用 `cmake` 构建 `libevent`
 
 ### 1、下载 libevent 直接在官网下载
 
